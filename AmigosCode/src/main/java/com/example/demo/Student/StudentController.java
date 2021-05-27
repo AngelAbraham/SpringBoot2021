@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 	
+	private final StudentServices stundentService;
+	
+	public StudentController(StudentServices stundentService) {
+		this.stundentService = stundentService;
+	}
+	
 	@GetMapping
 	public List<Student> getStudent() {
-		
-		return List.of(new Student(
-				21L, 
-				"adasd",
-				"asdad", 
-				null, 
-				23));
+		return stundentService.getStudent();
 	}
 
 }
